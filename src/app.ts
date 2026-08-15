@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = "https://password-pwned-checker-api-project.onrender.com";
 
 interface PasswordCheckResponse {
   password_pwned: boolean;
