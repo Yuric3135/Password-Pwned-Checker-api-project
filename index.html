@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pwned Password Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+    <div class="mascot" id="mascot">🛡️</div>
+
+    <h1>Pwned Password Checker</h1>
+    <p class="subtitle">Verifique se sua senha ou email já vazaram em alguma brecha de segurança conhecida.</p>
+
+    <div class="input-group">
+      <input type="text" id="passwordInput" placeholder="Digite uma senha">
+      <button id="checkButton">Checar</button>
+    </div>
+    <p id="result"></p>
+
+    <hr>
+
+    <h2>Checar Email</h2>
+    <div class="input-group">
+      <input type="text" id="emailInput" placeholder="Digite um email">
+      <button id="checkEmailButton">Checar Email</button>
+    </div>
+    <p id="emailResult"></p>
+  </div>
+
+  <script type="module" src="./dist/app.js"></script>
+</body>
+</html>
