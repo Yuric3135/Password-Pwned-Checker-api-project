@@ -32,10 +32,10 @@ def check_email_breach(email):
 
 def main():
     while True:
-        choice = input("Check a password (1), an email (2), or 'sair' to exit: ")
+        choice = input("Check a password (1), an email (2), or 'exit' to quit: ")
 
-        if choice.lower() == "sair":
-            print("Saindo...")
+        if choice.lower() == "exit":
+            print("Exiting...")
             break
 
         elif choice == "1":
@@ -59,10 +59,10 @@ def main():
                 else:
                     print(f"The email '{email}' was not found in any known breaches.")
             except Exception as e:
-                print(f"Erro ao checar o email: {e}")
+                print(f"An error occurred while checking the email: {e}")
 
         else:
-            print("Invalid choice. Please enter 1, 2, or 'sair'.")
+            print("Invalid choice. Please enter 1, 2, or 'exit'.")
 
         print()
 

@@ -37,15 +37,13 @@ def home():
     return {"message": "Welcome to the Pwned Password Checker API!"}
 
 
-@app.get("/check/{senha}")
-def check(senha: str):
-    result = check_pwned(senha)
+@app.get("/check/{password}")
+def check(password: str):
+    result = check_pwned(password)
     if result > 0:
-        return {"senha_vazada": True, "vezes": result}
+        return {"password_pwned": True, "times": result}
     else:
-        return {"senha_vazada": False, "vezes": 0}
-
-
+        return {"password_pwned": False, "times": 0}
 
 
 def check_email_breach(email):
@@ -60,4 +58,4 @@ def check_email_breach(email):
 @app.get("/check-email/{email}")
 def check_email(email: str):
     breaches = check_email_breach(email)
-    return {"email_vazado": len(breaches) > 0, "breaches": breaches}
+    return {"email_pwned": len(breaches) > 0, "breaches": breaches}

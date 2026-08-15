@@ -1,12 +1,12 @@
 const API_URL = "http://localhost:8000";
 
 interface PasswordCheckResponse {
-  senha_vazada: boolean;
-  vezes: number;
+  password_pwned: boolean;
+  times: number;
 }
 
 interface EmailCheckResponse {
-  email_vazado: boolean;
+  email_pwned: boolean;
   breaches: string[];
 }
 
@@ -22,16 +22,20 @@ async function checkEmail(email: string): Promise<EmailCheckResponse> {
   return data;
 }
 
+// Password elements
 const button = document.getElementById("checkButton") as HTMLButtonElement;
 const input = document.getElementById("passwordInput") as HTMLInputElement;
 const result = document.getElementById("result") as HTMLParagraphElement;
 
+// Email elements
 const emailButton = document.getElementById("checkEmailButton") as HTMLButtonElement;
 const emailInput = document.getElementById("emailInput") as HTMLInputElement;
 const emailResult = document.getElementById("emailResult") as HTMLParagraphElement;
 
+// Theme
 const themeToggle = document.getElementById("themeToggle") as HTMLButtonElement;
 
+// Mascot
 const mascot = document.getElementById("mascot") as HTMLDivElement;
 
 function reactMascot(happy: boolean) {
@@ -47,11 +51,11 @@ button.addEventListener("click", async () => {
   const password = input.value;
   const data = await checkPassword(password);
 
-  if (data.senha_vazada) {
-    result.textContent = `Essa senha foi vazada ${data.vezes} vezes! Troque ela.`;
+  if (data.password_pwned) {
+    result.textContent = `This password has been pwned ${data.times} times! You should change it.`;
     reactMascot(false);
   } else {
-    result.textContent = "Essa senha não foi encontrada em nenhum vazamento conhecido.";
+    result.textContent = "This password has not been found in any known breaches.";
     reactMascot(true);
   }
 });
@@ -60,11 +64,11 @@ emailButton.addEventListener("click", async () => {
   const email = emailInput.value;
   const data = await checkEmail(email);
 
-  if (data.email_vazado) {
-    emailResult.textContent = `Esse email foi encontrado em ${data.breaches.length} vazamento(s): ${data.breaches.join(", ")}`;
+  if (data.email_pwned) {
+    emailResult.textContent = `This email was found in ${data.breaches.length} breach(es): ${data.breaches.join(", ")}`;
     reactMascot(false);
   } else {
-    emailResult.textContent = "Esse email não foi encontrado em nenhum vazamento conhecido.";
+    emailResult.textContent = "This email has not been found in any known breaches.";
     reactMascot(true);
   }
 });
