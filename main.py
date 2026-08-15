@@ -32,7 +32,7 @@ def check_email_breach(email):
 
 def main():
     while True:
-        choice = input("Check a password (1), an email (2), or 'sair' to exit: ") 
+        choice = input("Check a password (1), an email (2), or 'sair' to exit: ")
 
         if choice.lower() == "sair":
             print("Saindo...")
@@ -64,6 +64,7 @@ def main():
         else:
             print("Invalid choice. Please enter 1, 2, or 'sair'.")
 
-        print()  
+        print()
+
 if __name__ == "__main__":
     main()
